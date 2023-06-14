@@ -123,7 +123,8 @@ let createNewUser = (data) => {
                     phoneNumber: data.phoneNumber,
                     gender: data.gender,
                     roleId: data.roleId,
-                    positionId: data.positionId
+                    positionId: data.positionId,
+                    image: data.avatar,
                 })
                 resolve({
                     errCode: 0,
