@@ -179,6 +179,7 @@ let updateUserData = (data) => {
                 user.roleId = data.roleId;
                 user.positionId = data.positionId;
                 user.phoneNumber = data.phoneNumber;
+                user.image = data.avatar;
                 await user.save();
                 resolve({
                     errCode: 0,
