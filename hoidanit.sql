@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2023 at 04:36 PM
+-- Generation Time: Jun 19, 2023 at 08:28 AM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -133,6 +133,24 @@ CREATE TABLE `histories` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `markdowns`
+--
+
+CREATE TABLE `markdowns` (
+  `id` int NOT NULL,
+  `contentHTML` longtext COLLATE utf8mb4_general_ci NOT NULL,
+  `contentMarkdown` longtext COLLATE utf8mb4_general_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_general_ci,
+  `doctorId` int DEFAULT NULL,
+  `specialtyId` int DEFAULT NULL,
+  `clinicId` int DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sequelizemeta`
 --
 
@@ -153,6 +171,7 @@ INSERT INTO `sequelizemeta` (`name`) VALUES
 ('migrations-create-schedule.js'),
 ('migrations-create-specialty.js'),
 ('migrations-create-user.js'),
+('migrations-markdown.js'),
 ('migrations-update-blob-user.js');
 
 -- --------------------------------------------------------
@@ -246,6 +265,12 @@ ALTER TABLE `histories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `markdowns`
+--
+ALTER TABLE `markdowns`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sequelizemeta`
 --
 ALTER TABLE `sequelizemeta`
@@ -296,6 +321,12 @@ ALTER TABLE `doctor-clinic-specialty`
 -- AUTO_INCREMENT for table `histories`
 --
 ALTER TABLE `histories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `markdowns`
+--
+ALTER TABLE `markdowns`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
