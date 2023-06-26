@@ -90,7 +90,7 @@ let getDetailDoctorById = (inputId) => {
                 data = await db.User.findOne({
                     where: { id: inputId },
                     attributes: {
-                        exclude: ['password', 'image']
+                        exclude: ['password']
                     },
                     include: [
                         {
@@ -104,6 +104,9 @@ let getDetailDoctorById = (inputId) => {
                 })
             }
             if (data) {
+                if (data.image) {
+                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                }
                 resolve({
                     errCode: 0,
                     data: data
@@ -112,7 +115,8 @@ let getDetailDoctorById = (inputId) => {
             else {
                 resolve({
                     errCode: 0,
-                    errMessage: 'The info of doctor not found!'
+                    errMessage: 'The info of doctor not found!',
+                    data: {}
                 })
             }
         } catch (e) {
