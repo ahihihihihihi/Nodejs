@@ -53,23 +53,49 @@ let getAllDoctors = () => {
 
 let saveDetailInfoDoctor = (inputData) => {
     return new Promise(async (resolve, reject) => {
+        // console.log('inputData doctor: ',inputData);
         try {
-            if (!inputData || !inputData.contentHTML || !inputData.contentMarkdown) {
+            if (!inputData || !inputData.contentHTML || !inputData.contentMarkdown || !inputData.action) {
                 resolve({
                     errCode: 1,
                     errmessage: 'missing parameter!'
                 })
             } else {
-                await db.Markdown.create({
-                    contentHTML: inputData.contentHTML,
-                    contentMarkdown: inputData.contentMarkdown,
-                    description: inputData.description,
-                    doctorId: inputData.doctorId
-                })
-                resolve({
-                    errCode: 0,
-                    errmessage: 'save info doctor successfully!'
-                })
+                if (inputData.action === 'CREATE') {
+                    await db.Markdown.create({
+                        contentHTML: inputData.contentHTML,
+                        contentMarkdown: inputData.contentMarkdown,
+                        description: inputData.description,
+                        doctorId: inputData.doctorId,
+                        // createdAt:new Date()
+                    })
+                    resolve({
+                        errCode: 0,
+                        errmessage: 'create info doctor successfully!'
+                    })
+                }
+                if (inputData.action === 'UPDATE') {
+                    let doctorMarkdown = await db.Markdown.findOne({
+                        where: {doctorId:inputData.doctorId},
+                        raw: false
+                    })
+
+                    if (doctorMarkdown) {
+                        doctorMarkdown.contentHTML = inputData.contentHTML;
+                        doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
+                        doctorMarkdown.description = inputData.description;
+                        // doctorMarkdown.updatedAt = new Date();
+                        await doctorMarkdown.save();
+                    }
+
+                    // console.log('date: ', new Date())
+                    
+                    resolve({
+                        errCode: 0,
+                        errmessage: 'Update info doctor successfully!'
+                    })
+                }
+                
             }
         } catch (e) {
             reject(e);
