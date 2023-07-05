@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2023 at 03:23 PM
+-- Generation Time: Jul 05, 2023 at 04:19 AM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -42,29 +42,49 @@ CREATE TABLE `allcodes` (
 --
 
 INSERT INTO `allcodes` (`id`, `keyMap`, `type`, `valueEn`, `valueVi`, `createdAt`, `updatedAt`) VALUES
-(1, 'R1', 'ROLE', 'Admin', 'Quản trị viên', NULL, NULL),
-(2, 'R2', 'ROLE', 'Doctor', 'Bác sĩ', NULL, NULL),
-(3, 'R3', 'ROLE', 'Patient', 'Bệnh nhân', NULL, NULL),
-(4, 'S1', 'STATUS', 'New', 'Lịch hẹn mới', NULL, NULL),
-(5, 'S2', 'STATUS', 'Confirmed', 'Đã xác nhận', NULL, NULL),
-(6, 'S3', 'STATUS', 'Done', 'Đã khám xong', NULL, NULL),
-(7, 'S4', 'STATUS', 'Cancel', 'Đã hủy', NULL, NULL),
-(8, 'T1', 'TIME', '8:00 AM - 9:00 AM', '8:00 - 9:00', NULL, NULL),
-(9, 'T2', 'TIME', '9:00 AM - 10:00 AM', '9:00 - 10:00', NULL, NULL),
-(10, 'T3', 'TIME', '10:00 AM - 11:00 AM', '10:00 - 11:00', NULL, NULL),
-(11, 'T4', 'TIME', '11:00 AM - 0:00 PM', '11:00 - 12:00', NULL, NULL),
-(12, 'T5', 'TIME', '1:00 PM - 2:00 PM', '13:00 - 14:00', NULL, NULL),
-(13, 'T6', 'TIME', '2:00 PM - 3:00 PM', '14:00 - 15:00', NULL, NULL),
-(14, 'T7', 'TIME', '3:00 PM - 4:00 PM', '15:00 - 16:00', NULL, NULL),
-(15, 'T8', 'TIME', '4:00 PM - 5:00 PM', '16:00 - 17:00', NULL, NULL),
-(16, 'P0', 'POSITION', 'Doctor', 'Bác sĩ', NULL, NULL),
-(17, 'P1', 'POSITION', 'Master', 'Thạc sĩ', NULL, NULL),
-(18, 'P2', 'POSITION', 'Dr.', 'Tiến sĩ', NULL, NULL),
-(19, 'P3', 'POSITION', 'Associate Professor', 'Phó giáo sư', NULL, NULL),
-(20, 'P4', 'POSITION', 'Professor', 'Giáo sư', NULL, NULL),
-(21, 'M', 'GENDER', 'Male', 'Nam', NULL, NULL),
-(22, 'F', 'GENDER', 'Female', 'Nữ', NULL, NULL),
-(23, 'O', 'GENDER', 'Other', 'Khác', NULL, NULL);
+(24, 'R1', 'ROLE', 'Admin', 'Quản trị viên', NULL, NULL),
+(25, 'R2', 'ROLE', 'Doctor', 'Bác sĩ', NULL, NULL),
+(26, 'R3', 'ROLE', 'Patient', 'Bệnh nhân', NULL, NULL),
+(27, 'S1', 'STATUS', 'New', 'Lịch hẹn mới', NULL, NULL),
+(28, 'S2', 'STATUS', 'Confirmed', 'Đã xác nhận', NULL, NULL),
+(29, 'S3', 'STATUS', 'Done', 'Đã khám xong', NULL, NULL),
+(30, 'S4', 'STATUS', 'Cancel', 'Đã hủy', NULL, NULL),
+(31, 'T1', 'TIME', '8:00 AM - 9:00 AM', '8:00 - 9:00', NULL, NULL),
+(32, 'T2', 'TIME', '9:00 AM - 10:00 AM', '9:00 - 10:00', NULL, NULL),
+(33, 'T3', 'TIME', '10:00 AM - 11:00 AM', '10:00 - 11:00', NULL, NULL),
+(34, 'T4', 'TIME', '11:00 AM - 0:00 PM', '11:00 - 12:00', NULL, NULL),
+(35, 'T5', 'TIME', '1:00 PM - 2:00 PM', '13:00 - 14:00', NULL, NULL),
+(36, 'T6', 'TIME', '2:00 PM - 3:00 PM', '14:00 - 15:00', NULL, NULL),
+(37, 'T7', 'TIME', '3:00 PM - 4:00 PM', '15:00 - 16:00', NULL, NULL),
+(38, 'T8', 'TIME', '4:00 PM - 5:00 PM', '16:00 - 17:00', NULL, NULL),
+(39, 'P0', 'POSITION', 'None', 'Bác sĩ', NULL, NULL),
+(40, 'P1', 'POSITION', 'Master', 'Thạc sĩ', NULL, NULL),
+(41, 'P2', 'POSITION', 'Doctor', 'Tiến sĩ', NULL, NULL),
+(42, 'P3', 'POSITION', 'Associate Professor', 'Phó giáo sư', NULL, NULL),
+(43, 'P4', 'POSITION', 'Professor', 'Giáo sư', NULL, NULL),
+(44, 'M', 'GENDER', 'Male', 'Nam', NULL, NULL),
+(45, 'F', 'GENDER', 'Female', 'Nữ', NULL, NULL),
+(46, 'O', 'GENDER', 'Other', 'Khác', NULL, NULL),
+(47, 'PRI1', 'PRICE', '10', '200000', NULL, NULL),
+(48, 'PRI2', 'PRICE', '15', '250000', NULL, NULL),
+(49, 'PRI3', 'PRICE', '20', '300000', NULL, NULL),
+(50, 'PRI4', 'PRICE', '25', '350000', NULL, NULL),
+(51, 'PRI5', 'PRICE', '30', '400000', NULL, NULL),
+(52, 'PRI6', 'PRICE', '35', '450000', NULL, NULL),
+(53, 'PRI7', 'PRICE', '40', '500000', NULL, NULL),
+(54, 'PAY1', 'PAYMENT', 'Cash', 'Tiền mặt', NULL, NULL),
+(55, 'PAY2', 'PAYMENT', 'Credit card', 'Thẻ ATM', NULL, NULL),
+(56, 'PAY3', 'PAYMENT', 'All payment method', 'Tất cả', NULL, NULL),
+(57, 'PRO1', 'PROVINCE', 'Ha Noi', 'Hà Nội', NULL, NULL),
+(58, 'PRO2', 'PROVINCE', 'Ho Chi Minh', 'Hồ Chí Minh', NULL, NULL),
+(59, 'PRO3', 'PROVINCE', 'Da Nang', 'Đà Nẵng', NULL, NULL),
+(60, 'PRO4', 'PROVINCE', 'Can Tho', 'Cần Thơ', NULL, NULL),
+(61, 'PRO5', 'PROVINCE', 'Binh Duong', 'Bình Dương', NULL, NULL),
+(62, 'PRO6', 'PROVINCE', 'Dong Nai', 'Đồng Nai', NULL, NULL),
+(63, 'PRO7', 'PROVINCE', 'Quang Ninh', 'Quảng Ninh', NULL, NULL),
+(64, 'PRO8', 'PROVINCE', 'Hue', 'Thừa Thiên Huế', NULL, NULL),
+(65, 'PRO9', 'PROVINCE', 'Quang Binh', 'Quảng Bình', NULL, NULL),
+(66, 'PRO10', 'PROVINCE', 'Khanh Hoa', 'Khánh Hòa', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,6 +132,26 @@ CREATE TABLE `doctor-clinic-specialty` (
   `specialtyId` int DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_info`
+--
+
+CREATE TABLE `doctor_info` (
+  `id` int NOT NULL,
+  `doctorId` int NOT NULL,
+  `priceId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `provinceId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `paymentId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `addressClinic` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `nameClinic` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `note` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `count` int NOT NULL DEFAULT '0',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -196,7 +236,12 @@ INSERT INTO `schedules` (`id`, `currentNumber`, `maxNumber`, `date`, `timeType`,
 (25, NULL, 10, '1688662800000', 'T8', 18, '2023-07-03 22:17:27', '2023-07-03 22:17:27'),
 (26, NULL, 10, '1688749200000', 'T2', 18, '2023-07-03 22:23:25', '2023-07-03 22:23:25'),
 (27, NULL, 10, '1688749200000', 'T5', 18, '2023-07-03 22:23:25', '2023-07-03 22:23:25'),
-(28, NULL, 10, '1688749200000', 'T7', 18, '2023-07-03 22:23:25', '2023-07-03 22:23:25');
+(28, NULL, 10, '1688749200000', 'T7', 18, '2023-07-03 22:23:25', '2023-07-03 22:23:25'),
+(29, NULL, 10, '1688749200000', 'T1', 18, '2023-07-04 11:34:13', '2023-07-04 11:34:13'),
+(30, NULL, 10, '1688749200000', 'T3', 18, '2023-07-04 11:34:13', '2023-07-04 11:34:13'),
+(31, NULL, 10, '1688749200000', 'T4', 18, '2023-07-04 11:34:13', '2023-07-04 11:34:13'),
+(32, NULL, 10, '1688749200000', 'T6', 18, '2023-07-04 11:34:13', '2023-07-04 11:34:13'),
+(33, NULL, 10, '1688749200000', 'T8', 18, '2023-07-04 11:34:13', '2023-07-04 11:34:13');
 
 -- --------------------------------------------------------
 
@@ -217,6 +262,7 @@ INSERT INTO `sequelizemeta` (`name`) VALUES
 ('migrations-create-booking.js'),
 ('migrations-create-clinic.js'),
 ('migrations-create-doctor-clinic-specialty.js'),
+('migrations-create-doctor-info.js'),
 ('migrations-create-history.js'),
 ('migrations-create-schedule.js'),
 ('migrations-create-specialty.js'),
@@ -309,6 +355,12 @@ ALTER TABLE `doctor-clinic-specialty`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctor_info`
+--
+ALTER TABLE `doctor_info`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `histories`
 --
 ALTER TABLE `histories`
@@ -353,7 +405,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `allcodes`
 --
 ALTER TABLE `allcodes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `bookings`
@@ -374,6 +426,12 @@ ALTER TABLE `doctor-clinic-specialty`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `doctor_info`
+--
+ALTER TABLE `doctor_info`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `histories`
 --
 ALTER TABLE `histories`
@@ -389,7 +447,7 @@ ALTER TABLE `markdowns`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `specialties`
