@@ -59,12 +59,23 @@ let saveDetailInfoDoctor = (inputData) => {
     return new Promise(async (resolve, reject) => {
         // console.log('inputData doctor: ',inputData);
         try {
-            if (!inputData || !inputData.contentHTML || !inputData.contentMarkdown || !inputData.action) {
+            if (!inputData 
+                || !inputData.contentHTML 
+                || !inputData.contentMarkdown 
+                || !inputData.action
+                || !inputData.selectedPrice
+                || !inputData.selectedPayment
+                || !inputData.selectedProvince
+                || !inputData.nameClinic
+                || !inputData.addressClinic
+                || !inputData.note
+                ) {
                 resolve({
                     errCode: 1,
                     errmessage: 'missing parameter!'
                 })
             } else {
+                // upsert to Markdown
                 if (inputData.action === 'CREATE') {
                     await db.Markdown.create({
                         contentHTML: inputData.contentHTML,
@@ -73,10 +84,7 @@ let saveDetailInfoDoctor = (inputData) => {
                         doctorId: inputData.doctorId,
                         // createdAt:new Date()
                     })
-                    resolve({
-                        errCode: 0,
-                        errmessage: 'create info doctor successfully!'
-                    })
+                    
                 }
                 if (inputData.action === 'UPDATE') {
                     let doctorMarkdown = await db.Markdown.findOne({
@@ -94,9 +102,48 @@ let saveDetailInfoDoctor = (inputData) => {
 
                     // console.log('date: ', new Date())
                     
+                    
+                }
+
+                // upsert to Markdown table
+                let doctorInfo = await db.Doctor_info.findOne({
+                    where: {
+                        doctorId:inputData.doctorId,
+                    },
+                    raw:false,
+                })
+
+                if (doctorInfo) {
+                    //update
+                    doctorInfo.doctorId = inputData.doctorId;
+                    doctorInfo.priceId = inputData.selectedPrice;
+                    doctorInfo.provinceId = inputData.selectedProvince;
+                    doctorInfo.paymentId = inputData.selectedPayment;
+                    doctorInfo.nameClinic = inputData.nameClinic;
+                    doctorInfo.addressClinic = inputData.addressClinic;
+                    doctorInfo.note = inputData.note;
+                    await doctorInfo.save();
+
                     resolve({
                         errCode: 0,
                         errmessage: 'Update info doctor successfully!'
+                    })
+                } else
+                {
+                    //create
+                    await db.Doctor_info.create({
+                        doctorId : inputData.doctorId,
+                        priceId : inputData.selectedPrice,
+                        provinceId : inputData.selectedProvince,
+                        paymentId : inputData.selectedPayment,
+                        nameClinic : inputData.nameClinic,
+                        addressClinic : inputData.addressClinic,
+                        note : inputData.note,
+                    })
+
+                    resolve({
+                        errCode: 0,
+                        errmessage: 'create info doctor successfully!'
                     })
                 }
                 
