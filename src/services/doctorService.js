@@ -348,6 +348,65 @@ let getExtraInfoDoctorById = (doctorId) => {
     })
 }
 
+let getProfileDoctorById = (inputId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let data = '';
+            if (!inputId) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing required parameter!'
+                })
+            } else {
+                data = await db.User.findOne({
+                    where: { id: inputId },
+                    attributes: {
+                        exclude: ['password']
+                    },
+                    include: [
+                        {
+                            model: db.Markdown,
+                            attributes: ['description', 'contentHTML', 'contentMarkdown']
+                        },
+                        { model: db.Allcode, as: 'positionData', attributes: ['valueEn', 'valueVi'] },
+                        {
+                            model: db.Doctor_info,
+                            attributes:{
+                                exclude: ['id','doctorId'],
+                            },
+                            include:[
+                                { model: db.Allcode, as: 'priceTypeData', attributes: ['valueEn', 'valueVi'] },
+                                { model: db.Allcode, as: 'paymentTypeData', attributes: ['valueEn', 'valueVi'] },
+                                { model: db.Allcode, as: 'provinceTypeData', attributes: ['valueEn', 'valueVi'] },
+                            ]
+                        },
+                    ],
+                    raw: true,
+                    nest: true
+                })
+            }
+            if (data) {
+                if (data.image) {
+                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                }
+                resolve({
+                    errCode: 0,
+                    data: data
+                })
+            }
+            else {
+                resolve({
+                    errCode: 0,
+                    errMessage: 'The info of doctor not found!',
+                    data: {}
+                })
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctors: getAllDoctors,
@@ -355,6 +414,7 @@ module.exports = {
     getDetailDoctorById: getDetailDoctorById,
     bulkCreateSchedule:bulkCreateSchedule,
     getScheduleByDate:getScheduleByDate,
-    getExtraInfoDoctorById:getExtraInfoDoctorById
+    getExtraInfoDoctorById:getExtraInfoDoctorById,
+    getProfileDoctorById:getProfileDoctorById
 }
 
