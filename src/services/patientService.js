@@ -13,6 +13,7 @@ let postBookAppointment = (data) => {
                 || !data.doctorId
                 || !data.timeType
                 || !data.date
+                || !data.fullName
             ) {
                 resolve({
                     errCode: 1,
@@ -22,9 +23,10 @@ let postBookAppointment = (data) => {
                 
                 await emailService.sendSimpleEmail({
                     receiverEmail: data.email,
-                    patientName:'Bệnh nhân iu dấu',
-                    time:'8:00 - 9:00 Chủ nhật 01/08/2023',
-                    doctorName:'Mlem Mlem',
+                    patientName:data.fullName,
+                    time:data.timeString,
+                    doctorName:data.doctorName,
+                    language:data.language,
                     redirectLink:'https://youtu.be/0GL--Adfqhc?t=2392'
                 })
                 

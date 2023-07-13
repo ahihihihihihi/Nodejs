@@ -19,9 +19,19 @@ let sendSimpleEmail = async (datasend) => {
     to: datasend.receiverEmail, // list of receivers
     subject: "Thông tin đặt lệnh khám bệnh", // Subject line
     // html body
-    html:` 
+    html: getBodyHTMLEmail(datasend)
+    });
+    // console.log("Message sent: ", info);  
+}
+
+let getBodyHTMLEmail = (datasend) => {
+  let result = '';
+
+  if (datasend.language === 'vi') {
+    result = 
+    ` 
     <h3>Xin chào ${datasend.patientName}!</h3>
-    <p> Bạn nhận được email này vì đã đặt lịch khám bệnh online trên website Đặt lịch khám bệnh</p>
+    <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online trên website Đặt lịch khám bệnh</p>
     <p>Thông tin đặt lệnh khám bệnh</p>
     <div><b>Thời gian: ${datasend.time}</b></div>
     <div><b>Bác sĩ: ${datasend.doctorName}</b></div>
@@ -31,8 +41,25 @@ let sendSimpleEmail = async (datasend) => {
     </div>
     <div>Xin chân thành cảm ơn</div>
     `
-    });
-    // console.log("Message sent: ", info);  
+  }
+
+  if (datasend.language === 'en') {
+    result = 
+    ` 
+    <h3>Dear ${datasend.patientName}!</h3>
+    <p>You received this email because you booked an online medical appointment on the Book an appointment website</p>
+    <p>Information to order medical examination</p>
+    <div><b>Time: ${datasend.time}</b></div>
+    <div><b>Doctor: ${datasend.doctorName}</b></div>
+    <p>If the above information is true, please click on the link below to confirm & complete the medical appointment booking procedure.</p>
+    <div>
+        <a href=${datasend.redirectLink} target="_blank">Click here</a>
+    </div>
+    <div>Sincerely thank</div>
+    `
+  }
+
+  return result;
 }
 
 module.exports = {

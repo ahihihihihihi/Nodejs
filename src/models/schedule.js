@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            Schedule.belongsTo(models.Allcode, { foreignKey: 'timeType', targetKey: 'keyMap', as: 'timeTypeData' })
+            Schedule.belongsTo(models.Allcode, { foreignKey: 'timeType', targetKey: 'keyMap', as: 'timeTypeData' });
+            Schedule.belongsTo(models.User, { foreignKey: 'doctorId', targetKey: 'id', as: 'doctorData' });
         }
     };
     Schedule.init({
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         maxNumber: DataTypes.INTEGER,
         date: DataTypes.STRING,
         timeType: DataTypes.STRING,
+        token: DataTypes.STRING,
         doctorId: DataTypes.INTEGER,
     }, {
         sequelize,
