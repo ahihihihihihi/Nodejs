@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2023 at 08:27 AM
+-- Generation Time: Jul 18, 2023 at 07:23 AM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -151,6 +151,8 @@ CREATE TABLE `doctor-clinic-specialty` (
 CREATE TABLE `doctor_info` (
   `id` int NOT NULL,
   `doctorId` int NOT NULL,
+  `specialtyId` int NOT NULL,
+  `clinicId` int NOT NULL,
   `priceId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `provinceId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `paymentId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
@@ -166,10 +168,9 @@ CREATE TABLE `doctor_info` (
 -- Dumping data for table `doctor_info`
 --
 
-INSERT INTO `doctor_info` (`id`, `doctorId`, `priceId`, `provinceId`, `paymentId`, `addressClinic`, `nameClinic`, `note`, `count`, `createdAt`, `updatedAt`) VALUES
-(1, 18, 'PRI3', 'PRO2', 'PAY2', '110 Lê Duẩn', 'ten phong kham', 'ghi chu', 0, '2023-07-05 16:31:21', '2023-07-05 16:32:13'),
-(2, 19, 'PRI7', 'PRO5', 'PAY1', 'tinh binh duong', 'doc la binh duong', 'no thing', 0, '2023-07-05 16:47:32', '2023-07-05 16:47:32'),
-(3, 21, 'PRI1', 'PRO7', 'PAY3', 'cam pha', 'quang than', 'ahoho', 0, '2023-07-05 16:53:08', '2023-07-05 16:53:08');
+INSERT INTO `doctor_info` (`id`, `doctorId`, `specialtyId`, `clinicId`, `priceId`, `provinceId`, `paymentId`, `addressClinic`, `nameClinic`, `note`, `count`, `createdAt`, `updatedAt`) VALUES
+(3, 18, 10, 0, 'PRI4', 'PRO3', 'PAY1', '113 Công an', 'Bệnh viện 113', 'nothing', 0, '2023-07-18 14:19:39', '2023-07-18 14:19:39'),
+(4, 19, 9, 0, 'PRI3', 'PRO5', 'PAY3', 'acscsa', 'sac', 'ahihi', 0, '2023-07-18 14:23:05', '2023-07-18 14:23:05');
 
 -- --------------------------------------------------------
 
@@ -452,7 +453,7 @@ ALTER TABLE `doctor-clinic-specialty`
 -- AUTO_INCREMENT for table `doctor_info`
 --
 ALTER TABLE `doctor_info`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `histories`
