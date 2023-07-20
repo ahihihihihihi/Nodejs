@@ -13,35 +13,35 @@ let createClinic = async (req, res) => {
     }
 }
 
-// let getAllSpecialty = async (req, res) => {
-//     try {
-//         let response = await specialtyService.getAllSpecialty();
-//         return res.status(200).json(response);
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(200).json({
-//             errCode: -1,
-//             message: 'Error from server...'
-//         })
-//     }
-// }
+let getAllClinic = async (req, res) => {
+    try {
+        let response = await clinicService.getAllClinic();
+        return res.status(200).json(response);
+    } catch (e) {
+        console.log(e);
+        return res.status(200).json({
+            errCode: -1,
+            message: 'Error from server...'
+        })
+    }
+}
 
-// let getDetailSpecialtyById = async (req, res) => {
-//     try {
-//         let response = await specialtyService.getDetailSpecialtyById(req.query.id,req.query.location);
-//         return res.status(200).json(response);
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(200).json({
-//             errCode: -1,
-//             message: 'Error from server...'
-//         })
-//     }
-// }
+let getDetailClinicById = async (req, res) => {
+    try {
+        let response = await clinicService.getDetailClinicById(req.query.id);
+        return res.status(200).json(response);
+    } catch (e) {
+        console.log(e);
+        return res.status(200).json({
+            errCode: -1,
+            message: 'Error from server...'
+        })
+    }
+}
 
 module.exports = {
     createClinic:createClinic,
-    // getAllSpecialty:getAllSpecialty,
-    // getDetailSpecialtyById:getDetailSpecialtyById,
+    getAllClinic:getAllClinic,
+    getDetailClinicById:getDetailClinicById,
 
 }
