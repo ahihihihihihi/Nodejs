@@ -424,6 +424,7 @@ let getProfileDoctorById = (inputId) => {
 }
 
 let getListPatientForDoctor = (doctorId,date) => {
+    // console.log('check data: ',doctorId,date);
     return new Promise(async (resolve, reject) => {
         try {
             if (!doctorId || !date) {
@@ -446,6 +447,7 @@ let getListPatientForDoctor = (doctorId,date) => {
                                 { model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi'] },
                             ]
                         },
+                        { model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi'] },
                     ],
                     raw: true,
                     nest: true
