@@ -209,7 +209,7 @@ let getDetailDoctorById = (inputId) => {
             }
             if (data) {
                 if (data.image) {
-                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                    data.image = Buffer.from(data.image, 'base64').toString('binary');
                 }
                 resolve({
                     errCode: 0,
@@ -404,7 +404,7 @@ let getProfileDoctorById = (inputId) => {
             }
             if (data) {
                 if (data.image) {
-                    data.image = new Buffer(data.image, 'base64').toString('binary');
+                    data.image = Buffer.from(data.image, 'base64').toString('binary');
                 }
                 resolve({
                     errCode: 0,
